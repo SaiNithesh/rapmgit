@@ -1,0 +1,5 @@
+@EndUserText.label: 'Serv Definition of Employee App'
+define service ZUI_EMPLOYEE_2143 {
+  expose ZC_EMPLOYEE_2143 as Employees;
+  expose ZC_PROJECTS_2143 as Projects;
+}

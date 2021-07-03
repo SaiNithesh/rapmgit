@@ -1,0 +1,146 @@
+@Metadata.layer: #CORE
+
+@UI: { 
+    headerInfo : { 
+        typeName: 'Employee',
+        typeNamePlural: 'Employees',
+        title: { 
+            type: #STANDARD, label: 'Employee', value: 'EmployeeID' 
+        },
+        description: { 
+            value: 'FullName'
+        }
+    },
+    presentationVariant: [{
+        sortOrder: [{ 
+            by: 'EmployeeID', 
+            direction: #ASC 
+        }],
+        visualizations: [{
+            type: #AS_LINEITEM
+        }] 
+    }]
+}
+
+annotate view ZC_EMPLOYEE_2143 with
+{
+  @UI.facet: [
+    {
+        id: 'EmployeeHeaderContact',
+        purpose: #HEADER,
+        type : #DATAPOINT_REFERENCE,
+        position: 10,
+        targetQualifier: 'ContactData'        
+    },
+    { 
+        id: 'EmployeeHeaderWork',
+        purpose: #HEADER,
+        type: #DATAPOINT_REFERENCE,
+        position: 20,
+        targetQualifier: 'WorkData'
+    },
+    {
+        label: 'General Information',
+        id : 'generalInfo',
+        type: #COLLECTION,
+        position: 10
+   },
+   { 
+        label: 'Basic Details',
+        id:'Basic',
+        type: #IDENTIFICATION_REFERENCE,
+        purpose: #STANDARD,
+        position: 10,
+        parentId: 'generalInfo'
+  },
+  { 
+        label: 'Contact Details',
+        id:'ContactGroupID',
+        purpose: #STANDARD,
+        type: #FIELDGROUP_REFERENCE,
+        position: 20,
+        parentId: 'generalInfo',
+        targetQualifier: 'ContactGroup'
+  },
+  { 
+        label: 'Work Location Details',
+        id:'WorkGroupID',
+        purpose: #STANDARD,
+        type: #FIELDGROUP_REFERENCE,
+        position: 30,
+        parentId: 'generalInfo',
+        targetQualifier: 'WorkGroup'
+  },
+  { 
+        label: 'Projects',
+        id: 'projects',
+        type: #COLLECTION,
+        position: 20
+  }]
+   
+  @UI.lineItem: [{ position: 10 }]
+  @UI.selectionField: [{ position: 10 }]
+  EmployeeID;
+  @UI.lineItem: [{ position: 30, label: 'Email ID'}] 
+  @UI.dataPoint: { qualifier: 'ContactData', title: 'Email ID' }
+  EmailID;
+  @UI.identification: [{ position: 10 }]
+  FirstName;
+  @UI.identification: [{ position: 20 }]
+  LastName;
+  
+  @UI.lineItem: [{ position: 20, label: 'Employee Name' }]
+  FullName;
+  @UI.lineItem: [{ position: 40, label: 'Date of Birth' }] 
+  @UI.identification: [{ position: 30 }]
+  Dob;
+  @UI.lineItem: [{ position: 60 }] 
+  @UI.identification: [{ position: 30 }]
+  Gender;
+  @UI.lineItem: [{ position: 70 }]
+   @UI.fieldGroup: [{qualifier: 'ContactGroup', position: 10 }]
+  Designation;
+  @UI.lineItem: [{ position: 80 }] 
+   @UI.fieldGroup: [{qualifier: 'ContactGroup', position: 20 }]
+  Salarygrade;
+  @UI.lineItem: [{ position: 90 }]
+  @UI.selectionField: [{position: 20 }]
+   @UI.fieldGroup: [{qualifier: 'ContactGroup', position: 30 }]
+  Industry;  
+  @UI.lineItem: [{ position: 50, label: 'Manager ID' }] 
+  ManagerId;
+  @UI.lineItem: [{ position: 110 }]
+   @UI.fieldGroup: [{qualifier: 'ContactGroup', position: 40 }]
+  Address;
+  @UI.lineItem: [{ position: 120 }]
+   @UI.fieldGroup: [{qualifier: 'ContactGroup', position: 50 }]
+  Mobileno;
+  @UI.lineItem: [{ position: 130 }]
+   @UI.fieldGroup: [{qualifier: 'ContactGroup', position: 60 }]
+  City;
+  @UI.lineItem: [{ position: 140 }]
+   @UI.fieldGroup: [{qualifier: 'ContactGroup', position: 70 }]
+  Country;
+  @UI.lineItem: [{ position: 150 }]
+  @UI.dataPoint: { qualifier: 'WorkData', title: 'Work Status' }
+  EmpStatus;
+  @UI.lineItem: [{ position: 160 }]
+  EmpStartDate;
+  @UI.lineItem: [{ position: 170 }]
+  EmpEndDate;
+  @UI.lineItem: [{ position: 180 }]
+  @UI.fieldGroup: [{ qualifier: 'WorkGroup', position: 10 }]
+  EmpWorkLocId;
+  @UI.lineItem: [{ position: 190 }] 
+  @UI.fieldGroup: [{ qualifier: 'WorkGroup', position: 20 }]
+  EmpWorkLocDesc;
+  @UI.lineItem: [{ position: 200 }] 
+  @UI.fieldGroup: [{ qualifier: 'WorkGroup', position: 30 }]
+  EmpWorkLocCity;
+  @UI.lineItem: [{ position: 210 }] 
+  @UI.fieldGroup: [{ qualifier: 'WorkGroup', position: 40 }]
+  EmpWorkLocCountry;
+  @UI.lineItem: [{ position: 220 }] 
+  @UI.fieldGroup: [{ qualifier: 'WorkGroup', position: 05 }]
+  EmpWorkExperience;
+}
